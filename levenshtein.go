@@ -170,18 +170,3 @@ func Lev(s1, s2 string) int {
 	}
 	return vcell[m1*width]
 }
-
-/*
-	if l.Source[i-1] == l.Target[j-1] {
-		l.M.Set(i, j, (l.M.At(i-1, j-1)))
-	} else {
-		delCost := l.M.At(i-1, j) + Deletion
-		subCost := l.M.At(i-1, j-1) + Substitution
-		//if l.Source[i-1] != l.Target[j-1] {
-		//	subCost += Substitution
-		//}
-		insCost := l.M.At(i, j-1) + Insertion
-		minVal := MinFloat64(delCost, subCost, insCost)
-		l.M.Set(i, j, minVal)
-	}
-*/
