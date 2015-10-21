@@ -6,6 +6,16 @@ import (
 	"testing"
 )
 
+var m = mat64.NewDense(3, 1, []float64{1, 2, 3})
+var n = mat64.NewDense(3, 1, []float64{2, 4, 6})
+
+func BenchmarkEuclideanDistance(b *testing.B) {
+	euclidean := NewEuclidean()
+	for i := 0; i < b.N; i++ {
+		euclidean.Distance(n, m)
+	}
+}
+
 func TestEuclideanDistanceStruct(t *testing.T) {
 	euclidean := NewEuclidean()
 	var expected float64
