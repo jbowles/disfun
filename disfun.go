@@ -5,6 +5,7 @@ package disfun
 import (
 	"github.com/gonum/matrix/mat64"
 	"math"
+	"strings"
 )
 
 const (
@@ -12,7 +13,35 @@ const (
 	Substitution = float64(1)
 	Insertion    = float64(1)
 	Deletion     = float64(1)
+	GAP_COST     = float64(0.5)
 )
+
+// is this string index outside of the ASCII numeric code points?
+func nan(c rune) bool {
+	return ((c > 57) || (c < 48))
+}
+
+func isVowel(c rune) bool {
+	switch c {
+	case 'A', 'E', 'I', 'O', 'U', 'Y':
+		return true
+	default:
+		return false
+	}
+}
+
+func isVowelNoY(c rune) bool {
+	switch c {
+	case 'A', 'E', 'I', 'O', 'U':
+		return true
+	default:
+		return false
+	}
+}
+
+func cleanInput(input string) string {
+	return strings.ToUpper(strings.TrimSpace(input))
+}
 
 // floatsToMatrix creates a new mat64.Dense matrix from a slice of float64.
 func floatsToMatrix(floats []float64) *mat64.Dense {

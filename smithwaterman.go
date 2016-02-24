@@ -1,7 +1,5 @@
 package disfun
 
-const GAP_COST = float64(0.5)
-
 func getCost(r1 []rune, r1Index int, r2 []rune, r2Index int) float64 {
 	if r1[r1Index] == r2[r2Index] {
 		return 1.0
