@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/jbowles/wordvec)](https://goreportcard.com/report/github.com/jbowles/wordvec)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jbowles/disfun)](https://goreportcard.com/report/github.com/jbowles/disfun)
 [![GoDoc](https://godoc.org/github.com/jbowles/disfun?status.svg)](https://godoc.org/github.com/jbowles/disfun)
 
 #DisFun
