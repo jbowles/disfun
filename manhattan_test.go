@@ -3,10 +3,9 @@ package disfun
 import "testing"
 
 func TestManhattanDistanceStructZero(t *testing.T) {
-	man := NewManhattan()
 	x := FloatsToMatrix([]float64{12, 45, 78, 23, 45, 97})
 
-	distance := man.Distance(x, x)
+	distance := Manhattan(x, x)
 	expected := 0.0
 	if distance != expected {
 		t.Log("Expected: ", expected, "but got ", distance)
@@ -14,11 +13,10 @@ func TestManhattanDistanceStructZero(t *testing.T) {
 	}
 }
 func TestManhattanDistanceStruct(t *testing.T) {
-	man := NewManhattan()
 	x := FloatsToMatrix([]float64{1, 2, 3})
 	y := FloatsToMatrix([]float64{2, 4, 6})
 
-	distance := man.Distance(x, y)
+	distance := Manhattan(x, y)
 	expected := 6.0
 	if distance != expected {
 		t.Log("Expected: ", expected, "but got ", distance)

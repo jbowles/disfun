@@ -1,28 +1,20 @@
-/*
-Levenshtein (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.
-
-Fun demo here: http://andrew.hedges.name/experiments/levenshtein/
-
-Currently bemchmarking 3 different implemntations. One is simple pass through (Lev), another uses Leven struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The last one uses the mat64 matrix package.
-
-	Row		== Height
-	Column	== Width
-
-	Levenshtein is the most accurate but alos the most costly due to building matrices. I can get this down but using dense matrices for this is not a good idea.
-	The other to two functions are about the same speed but they are not very readable and not the most accurate... see the tests for differences in accuracy between (Leven, Lev) and Levenshtein.
-*/
 package disfun
 
 import (
 	"github.com/gonum/matrix/mat64"
 )
 
-const (
-	Substitution = float64(1)
-	Insertion    = float64(1)
-	Deletion     = float64(1)
-)
-
+//Levenshtein (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.
+//
+//
+//Currently bemchmarking 3 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The last one (Levenshtein) uses the mat64 matrix package.
+//
+//	Row     == Height
+//	Column  == Width
+//
+//	Demo here: http://andrew.hedges.name/experiments/levenshtein/
+//
+// Levenshtein is the most accurate but also the most costly due to building matrices. I can get this down but using dense matrices for this is not a good idea. The other two functions are about the same speed but they are not very readable and not the most accurate... see the tests for differences in accuracy between Leven, Lev, and Levenshtein.
 type Levenshtein struct {
 	Source       []rune
 	Target       []rune
@@ -81,6 +73,11 @@ func (l *Levenshtein) Similarity() float64 {
 	return l.M.At(len(l.Source), len(l.Target))
 }
 
+//Leven (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.
+//
+//Currently bemchmarking 3 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The last one (Levenshtein) uses the mat64 matrix package.
+//
+// Levenshtein is the most accurate but also the most costly due to building matrices. I can get this down but using dense matrices for this is not a good idea. The other two functions are about the same speed but they are not very readable and not the most accurate... see the tests for differences in accuracy between Leven, Lev, and Levenshtein.
 type Leven struct {
 	S1         string
 	S2         string
@@ -140,6 +137,11 @@ func (l *Leven) Similarity() float64 {
 	return float64(l.VectorCell[l.Lens1*l.Width])
 }
 
+//Lev (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.
+//
+//Currently bemchmarking 3 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The last one (Levenshtein) uses the mat64 matrix package.
+//
+// Levenshtein is the most accurate but also the most costly due to building matrices. I can get this down but using dense matrices for this is not a good idea. The other two functions are about the same speed but they are not very readable and not the most accurate... see the tests for differences in accuracy between Leven, Lev, and Levenshtein.
 func Lev(s1, s2 string) int {
 	m1 := len(s1)
 	n2 := len(s2)
