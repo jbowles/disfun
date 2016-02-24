@@ -1,13 +1,13 @@
 package disfun
 
 import (
-	"github.com/jbowles/disfun/Godeps/_workspace/src/github.com/gonum/matrix/mat64"
+	"github.com/gonum/matrix/mat64"
 )
 
 //Levenshtein (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.
 //
 //
-//Currently bemchmarking 3 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The last one (Levenshtein) uses the mat64 matrix package.
+//Currently bemchmarking 4 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The third one (Levenshtein) uses the mat64 matrix package. The last one (EditDistance) is the fastest but I haven't checked it accuracy yet.
 //
 //	Row     == Height
 //	Column  == Width
@@ -75,7 +75,7 @@ func (l *Levenshtein) Similarity() float64 {
 
 //Leven (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.
 //
-//Currently bemchmarking 3 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The last one (Levenshtein) uses the mat64 matrix package.
+//Currently bemchmarking 4 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The third one (Levenshtein) uses the mat64 matrix package. The last one (EditDistance) is the fastest but I haven't checked it accuracy yet.
 //
 // Levenshtein is the most accurate but also the most costly due to building matrices. I can get this down but using dense matrices for this is not a good idea. The other two functions are about the same speed but they are not very readable and not the most accurate... see the tests for differences in accuracy between Leven, Lev, and Levenshtein.
 type Leven struct {
@@ -139,7 +139,7 @@ func (l *Leven) Similarity() float64 {
 
 //Lev (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.
 //
-//Currently bemchmarking 3 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The last one (Levenshtein) uses the mat64 matrix package.
+//Currently bemchmarking 4 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The third one (Levenshtein) uses the mat64 matrix package. The last one (EditDistance) is the fastest but I haven't checked it accuracy yet.
 //
 // Levenshtein is the most accurate but also the most costly due to building matrices. I can get this down but using dense matrices for this is not a good idea. The other two functions are about the same speed but they are not very readable and not the most accurate... see the tests for differences in accuracy between Leven, Lev, and Levenshtein.
 func Lev(s1, s2 string) int {
@@ -171,4 +171,50 @@ func Lev(s1, s2 string) int {
 		}
 	}
 	return vcell[m1*width]
+}
+
+// LevEditDistance computes the Levenshtein distance between two strings. The returned value - distance - is the number of insertions, deletions, and substitutions it takes to transform one string (s1) into another (s2). Each step in the transformation "costs" one distance point.
+//
+//
+// //Currently bemchmarking 4 different implementations. One is a simple pass through (Lev), another (Leven) uses a struct and separate insertion, deletion, substitution functions with a handmade matrix called VectorCell. The third one (Levenshtein) uses the mat64 matrix package. The last one (EditDistance) is the fastest but I haven't checked it accuracy yet.
+func LevEditDistance(s1, s2 string) (distance int) {
+	// index by code point, not byte
+	r1 := []rune(s1)
+	r2 := []rune(s2)
+
+	rows := len(r1) + 1
+	cols := len(r2) + 1
+
+	var d1 int
+	var d2 int
+	var d3 int
+	var i int
+	var j int
+	dist := make([]int, rows*cols)
+
+	for i = 0; i < rows; i++ {
+		dist[i*cols] = i
+	}
+
+	for j = 0; j < cols; j++ {
+		dist[j] = j
+	}
+
+	for j = 1; j < cols; j++ {
+		for i = 1; i < rows; i++ {
+			if r1[i-1] == r2[j-1] {
+				dist[(i*cols)+j] = dist[((i-1)*cols)+(j-1)]
+			} else {
+				d1 = dist[((i-1)*cols)+j] + 1
+				d2 = dist[(i*cols)+(j-1)] + 1
+				d3 = dist[((i-1)*cols)+(j-1)] + 1
+
+				dist[(i*cols)+j] = MinInt32(d1, MinInt32(d2, d3))
+			}
+		}
+	}
+
+	distance = dist[(cols*rows)-1]
+
+	return
 }

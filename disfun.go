@@ -3,7 +3,7 @@
 package disfun
 
 import (
-	"github.com/jbowles/disfun/Godeps/_workspace/src/github.com/gonum/matrix/mat64"
+	"github.com/gonum/matrix/mat64"
 	"math"
 )
 
@@ -28,18 +28,8 @@ func ZeroDense(r, c int) *mat64.Dense {
 	return mat64.NewDense(r, c, matrixPoints)
 }
 
-// MinFloat64 finds the minimum float64 value of a range of float64.
-func MinFloat64(a ...float64) float64 {
-	min := math.MaxFloat64
-	for _, i := range a {
-		if i < min {
-			min = i
-		}
-	}
-	return min
-}
-
 // MinInt32 finds the minimum int32 value of a range of int.
+// MinInt32  = -1 << 31
 func MinInt32(a ...int) int {
 	min := math.MaxInt32
 	for _, i := range a {
@@ -50,9 +40,34 @@ func MinInt32(a ...int) int {
 	return min
 }
 
-// MaxINt32 finds the maximum int32 value of a range of int.
+// MaxInt32 finds the maximum int32 value of a range of int.
+// MaxInt32  = 1<<31 - 1
 func MaxInt32(a ...int) int {
 	max := math.MinInt32
+	for _, i := range a {
+		if i > max {
+			max = i
+		}
+	}
+	return max
+}
+
+// MinFloat64 finds the minimum float64 value of a range of float64.
+// SmallestNonzeroFloat64 = 4.940656458412465441765687928682213723651e-324 // 1 / 2**(1023 - 1 + 52)
+func MinFloat64(a ...float64) float64 {
+	min := math.MaxFloat64
+	for _, i := range a {
+		if i < min {
+			min = i
+		}
+	}
+	return min
+}
+
+// MaxFloat64 finds the maximum int64 value of a range of float64.
+// MaxFloat64 = 1.797693134862315708145274237317043567981e+308 // 2**1023 * (2**53 - 1) / 2**52
+func MaxFloat64(a ...float64) float64 {
+	max := math.MaxFloat64
 	for _, i := range a {
 		if i > max {
 			max = i
