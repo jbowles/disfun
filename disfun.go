@@ -53,7 +53,7 @@ func MaxInt32(a ...int) int {
 }
 
 // MinFloat64 finds the minimum float64 value of a range of float64.
-// SmallestNonzeroFloat64 = 4.940656458412465441765687928682213723651e-324 // 1 / 2**(1023 - 1 + 52)
+// MaxFloat64 = 1.797693134862315708145274237317043567981e+308 // 2**1023 * (2**53 - 1) / 2**52
 func MinFloat64(a ...float64) float64 {
 	min := math.MaxFloat64
 	for _, i := range a {
@@ -65,9 +65,9 @@ func MinFloat64(a ...float64) float64 {
 }
 
 // MaxFloat64 finds the maximum int64 value of a range of float64.
-// MaxFloat64 = 1.797693134862315708145274237317043567981e+308 // 2**1023 * (2**53 - 1) / 2**52
+// SmallestNonzeroFloat64 = 4.940656458412465441765687928682213723651e-324 // 1 / 2**(1023 - 1 + 52)
 func MaxFloat64(a ...float64) float64 {
-	max := math.MaxFloat64
+	max := math.SmallestNonzeroFloat64
 	for _, i := range a {
 		if i > max {
 			max = i
