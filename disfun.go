@@ -9,11 +9,11 @@ import (
 )
 
 const (
-	EARTH_RADIUS = float64(6371)
+	EarthRadius  = float64(6371)
 	Substitution = float64(1)
 	Insertion    = float64(1)
 	Deletion     = float64(1)
-	GAP_COST     = float64(0.5)
+	GapCost      = float64(0.5)
 )
 
 // is this string index outside of the ASCII numeric code points?
@@ -48,7 +48,7 @@ func floatsToMatrix(floats []float64) *mat64.Dense {
 	return mat64.NewDense(1, len(floats), floats)
 }
 
-// zeroDense creates a new mat64.Dense matrix of zero values with dimenions of r and c.
+// zeroDense creates a new mat64.Dense matrix of zero values with dimensions of r and c.
 func zeroDense(r, c int) *mat64.Dense {
 	var matrixPoints []float64
 	for i := 0; i < (r * c); i++ {

@@ -79,7 +79,7 @@ func DamerauLevenshtein(s1, s2 string) (distance int) {
 			insertDist := matrix[i][j-1] + 1
 			matchDist := matrix[i-1][j-1]
 			if r1[i] != r2[j] {
-				matchDist += 1
+				matchDist++
 			} else {
 				maxSrcMatchIndex = j
 			}

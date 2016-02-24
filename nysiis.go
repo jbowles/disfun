@@ -151,7 +151,6 @@ func NYSIIS(s1 string) string {
 
 	if len(output) > 6 {
 		return string(output[0:6])
-	} else {
-		return string(output)
 	}
+	return string(output)
 }

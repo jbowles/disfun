@@ -18,7 +18,7 @@ func Hamming(s1 string, s2 string) (distance int, err error) {
 
 	for i, v := range r1 {
 		if r2[i] != v {
-			distance += 1
+			distance++
 		}
 	}
 	return

@@ -82,7 +82,7 @@ func TestHaversinePointDistEagleToShastaMountain(t *testing.T) {
 	pa2 := 112.0097
 	pb1 := 41.4092
 	pb2 := 122.1949
-	distance := HaversinePoint(pa1, pa2, pb1, pb2, EARTH_RADIUS)
+	distance := HaversinePoint(pa1, pa2, pb1, pb2, EarthRadius)
 	expected := 864.8005613102791
 
 	if distance != expected {

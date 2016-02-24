@@ -41,5 +41,5 @@ func HaversinePoint(pointA1, pointA2, pointB1, pointB2, radius float64) float64 
 
 // HaversineLatLon accepts 2 sets of lat/lon, it multiplies the EARTH_RADIUS by the result of the haversine function.
 func HaversineLatLon(lat1, lon1, lat2, lon2 float64) float64 {
-	return (EARTH_RADIUS * Haversine(lat1, lon1, lat2, lon2))
+	return (EarthRadius * Haversine(lat1, lon1, lat2, lon2))
 }

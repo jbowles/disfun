@@ -7,9 +7,8 @@ type runestring []rune
 func (r *runestring) SafeAt(pos int) rune {
 	if pos < 0 || pos >= len(*r) {
 		return 0
-	} else {
-		return (*r)[pos]
 	}
+	return (*r)[pos]
 }
 
 // A safe way to obtain a substring of a runestring. It will return a null
@@ -17,9 +16,8 @@ func (r *runestring) SafeAt(pos int) rune {
 func (r *runestring) SafeSubstr(pos int, length int) string {
 	if pos < 0 || pos > len(*r) || (pos+length) > len(*r) {
 		return ""
-	} else {
-		return string((*r)[pos : pos+length])
 	}
+	return string((*r)[pos : pos+length])
 }
 
 // Delete characters at positions pos. It will do nothing if you provide
