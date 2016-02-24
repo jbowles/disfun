@@ -40,7 +40,7 @@ func TestEuclideanDistanceStruct(t *testing.T) {
 func TestEuclideanDistanceStructZero(t *testing.T) {
 	euclidean := NewEuclidean()
 	var expected float64
-	x := FloatsToMatrix([]float64{12, 45, 78, 23, 45, 97})
+	x := floatsToMatrix([]float64{12, 45, 78, 23, 45, 97})
 
 	innerResult := euclidean.InnerProduct(x, x)
 	expected = 20216.0

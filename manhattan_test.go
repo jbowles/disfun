@@ -3,7 +3,7 @@ package disfun
 import "testing"
 
 func TestManhattanDistanceStructZero(t *testing.T) {
-	x := FloatsToMatrix([]float64{12, 45, 78, 23, 45, 97})
+	x := floatsToMatrix([]float64{12, 45, 78, 23, 45, 97})
 
 	distance := Manhattan(x, x)
 	expected := 0.0
@@ -13,8 +13,8 @@ func TestManhattanDistanceStructZero(t *testing.T) {
 	}
 }
 func TestManhattanDistanceStruct(t *testing.T) {
-	x := FloatsToMatrix([]float64{1, 2, 3})
-	y := FloatsToMatrix([]float64{2, 4, 6})
+	x := floatsToMatrix([]float64{1, 2, 3})
+	y := floatsToMatrix([]float64{2, 4, 6})
 
 	distance := Manhattan(x, y)
 	expected := 6.0

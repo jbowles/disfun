@@ -14,10 +14,10 @@ const (
 	Deletion     = float64(1)
 )
 
-// FloatsToMatrix creates a new mat64.Dense matrix from a slice of float64.
-//func floatsToMatrix(floats []float64) *mat64.Dense {
-//	return mat64.NewDense(1, len(floats), floats)
-//}
+// floatsToMatrix creates a new mat64.Dense matrix from a slice of float64.
+func floatsToMatrix(floats []float64) *mat64.Dense {
+	return mat64.NewDense(1, len(floats), floats)
+}
 
 // zeroDense creates a new mat64.Dense matrix of zero values with dimenions of r and c.
 func zeroDense(r, c int) *mat64.Dense {
