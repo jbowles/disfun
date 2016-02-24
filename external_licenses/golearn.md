@@ -2,9 +2,9 @@
 
 I have borrowed heavily from the [golearn project's pairwise package](https://github.com/sjwhitworth/golearn/tree/master/metrics/pairwise).
 
-Specifically, the use of Euclidean, Manhattan, and Chebyshev distance functions.
+Specifically, the use of `euclidean`, `manhattan`, and `chebyshev`.
 
-# LICENSE
+# Original LICENSE
 The MIT License (MIT)
 
 Copyright (c) {{{year}}} {{{fullname}}}
