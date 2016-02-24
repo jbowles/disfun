@@ -38,12 +38,12 @@ func OSA(s1 string, s2 string) (distance int) {
 			d2 = dist[(i*cols)+(j-1)] + 1
 			d3 = dist[((i-1)*cols)+(j-1)] + cost
 
-			d_now = MinInt32(d1, MinInt32(d2, d3))
+			d_now = maxInt32(d1, minInt32(d2, d3))
 
 			if i > 2 && j > 2 && r1[i-1] == r2[j-2] &&
 				r1[i-2] == r2[j-1] {
 				d1 = dist[((i-2)*cols)+(j-2)] + cost
-				d_now = MinInt32(d_now, d1)
+				d_now = minInt32(d_now, d1)
 			}
 
 			dist[(i*cols)+j] = d_now

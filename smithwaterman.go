@@ -41,9 +41,9 @@ func SmithWaterman(s1 string, s2 string) float64 {
 		// substitution cost
 		cost = getCost(r1, i, r2, 0)
 		if i == 0 {
-			d[0][0] = MaxFloat64(0.0, MaxFloat64(-GAP_COST, cost))
+			d[0][0] = maxFloat64(0.0, maxFloat64(-GAP_COST, cost))
 		} else {
-			d[i][0] = MaxFloat64(0.0, MaxFloat64(d[i-1][0]-GAP_COST, cost))
+			d[i][0] = maxFloat64(0.0, maxFloat64(d[i-1][0]-GAP_COST, cost))
 		}
 
 		// save if it is the biggest thus far
@@ -56,9 +56,9 @@ func SmithWaterman(s1 string, s2 string) float64 {
 		// substitution cost
 		cost = getCost(r1, 0, r2, j)
 		if j == 0 {
-			d[0][0] = MaxFloat64(0, MaxFloat64(-GAP_COST, cost))
+			d[0][0] = maxFloat64(0, maxFloat64(-GAP_COST, cost))
 		} else {
-			d[0][j] = MaxFloat64(0, MaxFloat64(d[0][j-1]-GAP_COST, cost))
+			d[0][j] = maxFloat64(0, maxFloat64(d[0][j-1]-GAP_COST, cost))
 		}
 
 		// save if it is the biggest thus far
@@ -72,9 +72,9 @@ func SmithWaterman(s1 string, s2 string) float64 {
 			cost = getCost(r1, i, r2, j)
 
 			// find the lowest cost
-			d[i][j] = MaxFloat64(
-				MaxFloat64(0, d[i-1][j]-GAP_COST),
-				MaxFloat64(d[i][j-1]-GAP_COST, d[i-1][j-1]+cost))
+			d[i][j] = maxFloat64(
+				maxFloat64(0, d[i-1][j]-GAP_COST),
+				maxFloat64(d[i][j-1]-GAP_COST, d[i-1][j-1]+cost))
 
 			// save if it is the biggest thus far
 			if d[i][j] > maxSoFar {

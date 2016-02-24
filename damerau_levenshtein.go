@@ -48,7 +48,7 @@ func DamerauLevenshtein(s1, s2 string) (distance int) {
 		} else {
 			matchDist = i + 1
 		}
-		matrix[i][0] = MinInt32(MinInt32(deleteDist, insertDist), matchDist)
+		matrix[i][0] = minInt32(minInt32(deleteDist, insertDist), matchDist)
 	}
 
 	for j := 1; j < len(r2); j++ {
@@ -61,7 +61,7 @@ func DamerauLevenshtein(s1, s2 string) (distance int) {
 			matchDist = j + 1
 		}
 
-		matrix[0][j] = MinInt32(MinInt32(deleteDist, insertDist), matchDist)
+		matrix[0][j] = minInt32(minInt32(deleteDist, insertDist), matchDist)
 	}
 
 	for i := 1; i < len(r1); i++ {
@@ -92,13 +92,13 @@ func DamerauLevenshtein(s1, s2 string) (distance int) {
 				if iSwap == 0 && jSwap == 0 {
 					preSwapCost = 0
 				} else {
-					preSwapCost = matrix[MaxInt32(0, iSwap-1)][MaxInt32(0, jSwap-1)]
+					preSwapCost = matrix[maxInt32(0, iSwap-1)][maxInt32(0, jSwap-1)]
 				}
 				swapDist = i + j + preSwapCost - iSwap - jSwap - 1
 			} else {
 				swapDist = inf
 			}
-			matrix[i][j] = MinInt32(MinInt32(MinInt32(deleteDist, insertDist), matchDist), swapDist)
+			matrix[i][j] = minInt32(minInt32(minInt32(deleteDist, insertDist), matchDist), swapDist)
 		}
 		seenRunes[r1[i]] = i
 	}

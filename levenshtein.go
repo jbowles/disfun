@@ -37,7 +37,7 @@ func NewLevenshtein(source, target string) *Levenshtein {
 		TargeString:  target,
 		RowHeight:    rows,
 		ColWidth:     columns,
-		M:            ZeroDense(rows, columns),
+		M:            zeroDense(rows, columns),
 	}
 }
 
@@ -61,7 +61,7 @@ func (l *Levenshtein) ComputeMatrix() *mat64.Dense {
 				delCost := l.M.At(i-1, j) + Deletion
 				subCost := l.M.At(i-1, j-1) + Substitution
 				insCost := l.M.At(i, j-1) + Insertion
-				l.M.Set(i, j, MinFloat64(delCost, subCost, insCost))
+				l.M.Set(i, j, minFloat64(delCost, subCost, insCost))
 			}
 		}
 	}
@@ -127,7 +127,7 @@ func (l *Leven) Similarity() float64 {
 			if l.S1[idxS1] == l.S2[idxS2] {
 				l.VectorCell[idxS1*l.Width+idxS2] = l.VectorCell[(idxS1-1)*l.Width+(idxS2-1)]
 			} else {
-				l.VectorCell[idxS1*l.Width+idxS2] = MinInt32(
+				l.VectorCell[idxS1*l.Width+idxS2] = minInt32(
 					l.deletion(idxS1, idxS2),
 					l.insertion(idxS1, idxS2),
 					l.substitution(idxS1, idxS2))
@@ -166,7 +166,7 @@ func Lev(s1, s2 string) int {
 				deletion := vcell[(i1-1)*width+j2] + 1
 				insertion := vcell[(i1*width+(j2-1))] + 1
 				substitution := vcell[((i1-1)*width+(j2-1))] + 1
-				vcell[i1*width+j2] = MinInt32(deletion, insertion, substitution)
+				vcell[i1*width+j2] = minInt32(deletion, insertion, substitution)
 			}
 		}
 	}
@@ -209,7 +209,7 @@ func LevEditDistance(s1, s2 string) (distance int) {
 				d2 = dist[(i*cols)+(j-1)] + 1
 				d3 = dist[((i-1)*cols)+(j-1)] + 1
 
-				dist[(i*cols)+j] = MinInt32(d1, MinInt32(d2, d3))
+				dist[(i*cols)+j] = minInt32(d1, minInt32(d2, d3))
 			}
 		}
 	}
