@@ -1,7 +1,7 @@
 package disfun
 
 import (
-	"github.com/jbowles/disfun/Godeps/_workspace/src/github.com/gonum/matrix/mat64"
+	"github.com/gonum/matrix/mat64"
 )
 
 //Levenshtein (edit distance) gives similarity metric by calcuating number of positions for substitution, insertion, and deletion.

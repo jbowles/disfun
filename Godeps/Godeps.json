@@ -1,14 +1,27 @@
 {
 	"ImportPath": "github.com/jbowles/disfun",
-	"GoVersion": "go1.5",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v58",
 	"Deps": [
 		{
 			"ImportPath": "github.com/gonum/blas",
 			"Rev": "ef9fc7107e46bc76204dcdc2797d43870fd7d5a5"
 		},
 		{
+			"ImportPath": "github.com/gonum/blas/blas64",
+			"Rev": "ef9fc7107e46bc76204dcdc2797d43870fd7d5a5"
+		},
+		{
+			"ImportPath": "github.com/gonum/blas/native",
+			"Rev": "ef9fc7107e46bc76204dcdc2797d43870fd7d5a5"
+		},
+		{
+			"ImportPath": "github.com/gonum/blas/native/internal/math32",
+			"Rev": "ef9fc7107e46bc76204dcdc2797d43870fd7d5a5"
+		},
+		{
 			"ImportPath": "github.com/gonum/floats",
-			"Rev": "88964e2b7541fa77b600cec8777d00167489e941"
+			"Rev": "2a71180e4ad56b4f59c6e7fa0b9d25555451050b"
 		},
 		{
 			"ImportPath": "github.com/gonum/internal/asm",
@@ -16,11 +29,23 @@
 		},
 		{
 			"ImportPath": "github.com/gonum/lapack",
-			"Rev": "66ce2254fc0593cdd922015c46aa8064e5e2f650"
+			"Rev": "a5a54c9973fbf584984db7b058ae7855962c2ead"
+		},
+		{
+			"ImportPath": "github.com/gonum/lapack/lapack64",
+			"Rev": "a5a54c9973fbf584984db7b058ae7855962c2ead"
+		},
+		{
+			"ImportPath": "github.com/gonum/lapack/native",
+			"Rev": "a5a54c9973fbf584984db7b058ae7855962c2ead"
 		},
 		{
 			"ImportPath": "github.com/gonum/matrix",
-			"Rev": "784069fb9eae0aff04760ad37d1ee9d09bbb3eee"
+			"Rev": "3e753d364c6ae977964548c9683cefde520c5858"
+		},
+		{
+			"ImportPath": "github.com/gonum/matrix/mat64",
+			"Rev": "3e753d364c6ae977964548c9683cefde520c5858"
 		},
 		{
 			"ImportPath": "github.com/juju/errors",
@@ -32,19 +57,27 @@
 		},
 		{
 			"ImportPath": "github.com/juju/names",
-			"Rev": "0fa6e46604f432b3064b02b2160fc5e6056131b8"
+			"Rev": "ef19de31613af3735aa69ba3b40accce2faf7316"
 		},
 		{
 			"ImportPath": "github.com/juju/utils",
-			"Rev": "0cac78a34dd1c42d2f2dc718c345fd13e3a264fc"
+			"Rev": "af32cfaf28093965fdf63373d8447c489efb2875"
+		},
+		{
+			"ImportPath": "github.com/juju/utils/clock",
+			"Rev": "af32cfaf28093965fdf63373d8447c489efb2875"
+		},
+		{
+			"ImportPath": "github.com/juju/utils/set",
+			"Rev": "af32cfaf28093965fdf63373d8447c489efb2875"
 		},
 		{
 			"ImportPath": "golang.org/x/crypto/pbkdf2",
-			"Rev": "1f22c0103821b9390939b6776727195525381532"
+			"Rev": "c197bcf24cde29d3f73c7b4ac6fd41f4384e8af6"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",
-			"Rev": "f7716cbe52baa25d2e9b0d0da546fcf909fc16b4"
+			"Rev": "a83829b6f1293c91addabc89d0571c246397bbf4"
 		}
 	]
 }

@@ -1,7 +1,7 @@
 package disfun
 
 import (
-	"github.com/jbowles/disfun/Godeps/_workspace/src/github.com/juju/utils/set"
+	"github.com/juju/utils/set"
 )
 
 //Ngram is continuous sequence of n-items from a given sequence. The distance is the relative number of items between these two sequences.

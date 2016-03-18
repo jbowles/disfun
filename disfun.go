@@ -3,7 +3,7 @@
 package disfun
 
 import (
-	"github.com/jbowles/disfun/Godeps/_workspace/src/github.com/gonum/matrix/mat64"
+	"github.com/gonum/matrix/mat64"
 	"math"
 	"strings"
 )
