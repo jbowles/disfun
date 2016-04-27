@@ -10,15 +10,15 @@ import (
 
 func TestDoubleMetaphone(t *testing.T) {
 	// load gzipped corpus
-	f, err := os.Open("double_metaphone_corpus.txt.gz")
+	f, err := os.Open("testdata/double_metaphone_corpus.txt.gz")
 	if err != nil {
-		panic("Error opening file double_metaphone_corpus.txt.gz! Exiting.")
+		panic("Error opening file testdata/double_metaphone_corpus.txt.gz! Exiting.")
 	}
 	defer f.Close()
 
 	g, err := gzip.NewReader(f)
 	if err != nil {
-		panic("Error with supposedly gzipped file double_metaphone_corpus.txt.gz! Exiting.")
+		panic("Error with supposedly gzipped file testdata/double_metaphone_corpus.txt.gz! Exiting.")
 	}
 
 	r := bufio.NewReader(g)
