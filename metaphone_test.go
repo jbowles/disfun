@@ -28,7 +28,7 @@ func TestDoubleMetaphone(t *testing.T) {
 		line = strings.TrimRight(line, "\n")
 		v := strings.Split(line, "|")
 
-		metaphone, alternate := DoubleMetaphone(v[0])
+		metaphone, alternate := DoubleMetaphone(v[0], 0)
 		if metaphone != v[1] || alternate != v[2] {
 			t.Errorf("DoubleMetaphone('%s') = (%v, %v), want (%v, %v)", v[0], metaphone, alternate, v[1], v[2])
 			t.FailNow()

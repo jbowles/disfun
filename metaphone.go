@@ -607,9 +607,9 @@ func conditionM0(input runestring, index int) bool {
 //
 // More information about this algorithm can be found on Wikipedia at
 // http://en.wikipedia.org/wiki/Metaphone.
-func DoubleMetaphone(s1 string) (string, string) {
+func DoubleMetaphone(strInput string, maxLength int) (string, string) {
 	// trim, upper space
-	s1 = cleanInput(s1)
+	s1 := cleanInput(strInput)
 
 	// structure to traverse the string by code point, not byte
 	input := runestring(s1)
@@ -623,7 +623,11 @@ func DoubleMetaphone(s1 string) (string, string) {
 		index += 1
 	}
 
-	result := newMetaphoneresult(4, true)
+	if maxLength == 0 {
+		maxLength = 4
+	}
+
+	result := newMetaphoneresult(maxLength, true)
 
 	for !result.isComplete() && index <= len(input)-1 {
 		c := rune(input.SafeAt(index))
