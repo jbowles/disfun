@@ -1,7 +1,7 @@
 {
 	"ImportPath": "github.com/jbowles/disfun",
-	"GoVersion": "go1.6",
-	"GodepVersion": "v58",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
 	"Deps": [
 		{
 			"ImportPath": "github.com/gonum/blas",
