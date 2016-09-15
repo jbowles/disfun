@@ -3,9 +3,8 @@ package disfun
 func getCost(r1 []rune, r1Index int, r2 []rune, r2Index int) float64 {
 	if r1[r1Index] == r2[r2Index] {
 		return 1.0
-	} else {
-		return -2.0
 	}
+	return -2.0
 }
 
 // SmithWaterman computes the Smith-Waterman local sequence alignment for the
@@ -39,9 +38,9 @@ func SmithWaterman(s1 string, s2 string) float64 {
 		// substitution cost
 		cost = getCost(r1, i, r2, 0)
 		if i == 0 {
-			d[0][0] = maxFloat64(0.0, maxFloat64(-GapCost, cost))
+			d[0][0] = max(0.0, max(-GapCost, cost))
 		} else {
-			d[i][0] = maxFloat64(0.0, maxFloat64(d[i-1][0]-GapCost, cost))
+			d[i][0] = max(0.0, max(d[i-1][0]-GapCost, cost))
 		}
 
 		// save if it is the biggest thus far
@@ -54,9 +53,9 @@ func SmithWaterman(s1 string, s2 string) float64 {
 		// substitution cost
 		cost = getCost(r1, 0, r2, j)
 		if j == 0 {
-			d[0][0] = maxFloat64(0, maxFloat64(-GapCost, cost))
+			d[0][0] = max(0.0, max(-GapCost, cost))
 		} else {
-			d[0][j] = maxFloat64(0, maxFloat64(d[0][j-1]-GapCost, cost))
+			d[0][j] = max(0.0, max(d[0][j-1]-GapCost, cost))
 		}
 
 		// save if it is the biggest thus far
@@ -71,7 +70,7 @@ func SmithWaterman(s1 string, s2 string) float64 {
 
 			// find the lowest cost
 			d[i][j] = maxFloat64(
-				maxFloat64(0, d[i-1][j]-GapCost),
+				max(0.0, d[i-1][j]-GapCost),
 				maxFloat64(d[i][j-1]-GapCost, d[i-1][j-1]+cost))
 
 			// save if it is the biggest thus far

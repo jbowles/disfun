@@ -9,11 +9,20 @@ import (
 )
 
 const (
-	EarthRadius  = float64(6371)
+	//EarthRadius is the radius of earth
+	EarthRadius = float64(6371)
+
+	//Substitution is for string distance algos
 	Substitution = float64(1)
-	Insertion    = float64(1)
-	Deletion     = float64(1)
-	GapCost      = float64(0.5)
+
+	//Insertion is for string distance algos
+	Insertion = float64(1)
+
+	//Deletion is for string distance algos
+	Deletion = float64(1)
+
+	//GapCost is for smith waterman
+	GapCost = float64(0.5)
 )
 
 // is this string index outside of the ASCII numeric code points?
@@ -103,4 +112,11 @@ func maxFloat64(a ...float64) float64 {
 		}
 	}
 	return max
+}
+
+func max(a, b float64) float64 {
+	if a < b {
+		return b
+	}
+	return a
 }
