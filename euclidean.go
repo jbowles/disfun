@@ -1,8 +1,9 @@
 package disfun
 
+/*
 import (
 	"github.com/gonum/matrix/mat64"
-	"math"
+	//"math"
 )
 
 // Euclidean finds the "ordinary" distance between vectors [u,v] given by the Pythagorean formula (sum of squares of all points):
@@ -20,19 +21,22 @@ func NewEuclidean() *Euclidean {
 }
 
 // InnerProduct computes a Eucledian inner product.
-func (e *Euclidean) InnerProduct(u, v *mat64.Vector) (result float64) {
-	result = mat64.Dot(u, v)
-	return
+func (e *Euclidean) InnerProduct(u, v *mat64.Vector) float64 {
+	return mat64.Dot(u, v)
 }
+*/
 
+/*
 // Distance finds the Euclidean distance.
 func (e *Euclidean) Distance(u, v *mat64.Dense) float64 {
 	subVec := mat64.NewDense(0, 0, nil)
 	subVec.Sub(u, v)
 
-	result := e.InnerProduct(subVec, subVec)
-	return math.Sqrt(result)
+	subVec
+	//result := e.InnerProduct(subVec, subVec)
+	//return math.Sqrt(result)
 }
+*/
 
 /*
  Not sure why this doesn't work!!

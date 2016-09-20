@@ -1,5 +1,6 @@
 package disfun
 
+/*
 import (
 	"github.com/gonum/matrix/mat64"
 	"math"
